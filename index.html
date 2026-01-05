@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Study Planner</h1>
+    <p>Organize your tasks and manage deadlines</p>
+  </header>
+
+  <main>
+    <!-- Task Form -->
+    <section class="task-form">
+      <h2>Add New Task</h2>
+      <form id="taskForm">
+        <input type="text" id="title" placeholder="Task title" required />
+        
+        <input type="text" id="subject" placeholder="Subject" required />
+        
+        <input type="date" id="dueDate" required />
+        
+        <select id="priority" required>
+          <option value="">Priority</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <button type="submit">Add Task</button>
+      </form>
+    </section>
+
+    <!-- Task List -->
+    <section class="task-list">
+      <h2>Your Tasks</h2>
+      <ul id="taskList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Personal Project – IB</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
