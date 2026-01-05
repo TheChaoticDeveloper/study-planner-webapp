@@ -1,5 +1,6 @@
 const taskForm = document.getElementById("taskForm");
 const taskList = document.getElementById("taskList");
+const sortSelect = document.getElementById("sort");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -8,7 +9,7 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// Render tasks to screen
+// Render tasks
 function renderTasks() {
   taskList.innerHTML = "";
 
@@ -19,7 +20,7 @@ function renderTasks() {
     li.innerHTML = `
       <div class="task-info">
         <strong>${task.title}</strong><br />
-        ${task.subject} – Due: ${task.dueDate}
+        ${task.subject} – <em>Due: ${task.dueDate}</em>
       </div>
       <div class="task-actions">
         <button onclick="deleteTask(${index})">Delete</button>
@@ -30,7 +31,7 @@ function renderTasks() {
   });
 }
 
-// Add new task
+// Add task
 taskForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -38,13 +39,12 @@ taskForm.addEventListener("submit", function (e) {
     title: document.getElementById("title").value,
     subject: document.getElementById("subject").value,
     dueDate: document.getElementById("dueDate").value,
-    priority: document.getElementById("priority").value,
+    priority: document.getElementById("priority").value
   };
 
   tasks.push(task);
   saveTasks();
-  renderTasks();
-
+  sortTasks();
   taskForm.reset();
 });
 
@@ -55,5 +55,25 @@ function deleteTask(index) {
   renderTasks();
 }
 
+// Sort tasks
+function sortTasks() {
+  const value = sortSelect.value;
+
+  if (value === "date") {
+    tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+  } else if (value === "priority") {
+    const priorityOrder = { high: 1, medium: 2, low: 3 };
+    tasks.sort(
+      (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
+    );
+  }
+
+  renderTasks();
+}
+
+// Listen for sort changes
+sortSelect.addEventListener("change", sortTasks);
+
 // Initial render
-renderTasks();
+sortTasks();
+
