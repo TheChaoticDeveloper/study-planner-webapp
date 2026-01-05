@@ -38,21 +38,30 @@ form {
   gap: 0.75rem;
 }
 
-input, select, button {
+input,
+select,
+button {
   padding: 0.6rem;
   font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 button {
   background: #3498db;
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
   background: #2980b9;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 ul {
@@ -66,22 +75,46 @@ ul {
   align-items: center;
   border-left: 6px solid #ccc;
   padding: 0.75rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   background: #f9f9f9;
   border-radius: 4px;
+  transition: transform 0.2s ease;
 }
 
-.task.low { border-color: green; }
-.task.medium { border-color: orange; }
-.task.high { border-color: red; }
+.task:hover {
+  transform: scale(1.01);
+}
+
+.task.low {
+  border-color: green;
+}
+
+.task.medium {
+  border-color: orange;
+}
+
+.task.high {
+  border-color: red;
+}
 
 .task-info {
   flex: 1;
 }
 
+.task-info em {
+  color: #555;
+}
+
 .task-actions button {
   background: #e74c3c;
-  margin-left: 0.5rem;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  color: white;
+  cursor: pointer;
+}
+
+.task-actions button:hover {
+  background: #c0392b;
 }
 
 footer {
@@ -89,3 +122,20 @@ footer {
   padding: 1rem;
   color: #777;
 }
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  main {
+    margin: 1rem;
+  }
+
+  .task {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-actions {
+    margin-top: 0.5rem;
+  }
+}
+
