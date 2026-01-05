@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <h1>Study Planner</h1>
     <p>Organize your tasks and manage deadlines</p>
@@ -18,13 +19,11 @@
       <h2>Add New Task</h2>
       <form id="taskForm">
         <input type="text" id="title" placeholder="Task title" required />
-        
         <input type="text" id="subject" placeholder="Subject" required />
-        
         <input type="date" id="dueDate" required />
-        
+
         <select id="priority" required>
-          <option value="">Priority</option>
+          <option value="">Select priority</option>
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
@@ -32,6 +31,15 @@
 
         <button type="submit">Add Task</button>
       </form>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls">
+      <label for="sort">Sort tasks by:</label>
+      <select id="sort">
+        <option value="date">Due Date</option>
+        <option value="priority">Priority</option>
+      </select>
     </section>
 
     <!-- Task List -->
@@ -42,9 +50,10 @@
   </main>
 
   <footer>
-    <p>Personal Project – IB</p>
+    <p>IB BackUp Personal Project – Study Planner</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+
